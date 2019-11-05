@@ -1,6 +1,6 @@
 
-import keystoneService from '../services/KeystoneService'
-import userService from '../services/UserService'
+import keystoneService from '../services/OpenStack/Keystone/TokenService'
+import userService from '../services/OpenStack/Keystone/UserService'
 
 
 class UsersController {

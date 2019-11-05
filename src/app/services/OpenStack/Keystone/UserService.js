@@ -1,6 +1,6 @@
 import axios from "axios";
-import KeystoneService from './KeystoneService'
-import keystone from '../../config/keystone';
+import KeystoneService from './TokenService'
+import keystone from '../../../../config/keystone';
 
 class UserService{
 
@@ -12,7 +12,7 @@ class UserService{
    
     async _init()
     {
-        const token =await KeystoneService.checkToken();
+        const token = await KeystoneService.checkToken();
         this.token = token;
 
     }

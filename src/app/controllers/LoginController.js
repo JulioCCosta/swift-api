@@ -1,5 +1,5 @@
-import authService from '../services/AuthService'
-import roleService from '../services/RoleService'
+import authService from '../services/Core/AuthService'
+import roleService from '../services/OpenStack/Keystone/RoleService'
 
 class LoginController
 {

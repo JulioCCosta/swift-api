@@ -1,9 +1,10 @@
 import axios from "axios";
-import keystone from '../../config/keystone';
-class  KeystoneService
+import keystone from '../../../../config/keystone';
+
+class  TokenService
 {
 
-async generateToken()
+async generateToken(username, password, tenant)
 {
     
      let data =
@@ -15,8 +16,8 @@ async generateToken()
                     ],
                     "password": {
                         "user": {
-                            "name": keystone.username, 
-                            "password": keystone.password, 
+                            "name": username, 
+                            "password": password, 
                             "domain": {
                                 "name": "Default"
                             }
@@ -26,7 +27,7 @@ async generateToken()
                 "scope": {
                     "project": {
                        "domain":{"id":"default"},
-                       "name":keystone.tenantName
+                       "name":tenant
                     }
                 }
             }
@@ -39,7 +40,7 @@ async generateToken()
 async checkToken()
 {
         let result  = null;
-    await this.generateToken().then(response=>{
+    await this.generateToken(keystone.username, keystone.password, keystone.tenant).then(response=>{
         if(response.headers.hasOwnProperty("x-subject-token"))
             {
                 result =  response.headers['x-subject-token'];
@@ -58,4 +59,4 @@ async checkToken()
 }
 }
 
-export default new KeystoneService();
+export default new TokenService();
